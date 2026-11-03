@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}weather information{% endblock title %}
+
+{% block content %} 
+    <form action="" method="post">
+        <label for="city">city name:</label>
+        <input type="text" name="city" required><br><br>
+        <input type="submit" value="send">
+    </form>
+
+    {% if res %}
+        <p>temperature:{{res.main.temp}}</p>
+        <p>pressure:{{res.main.pressure}}</p>
+        <p>humidity:{{res.main.humidity}}</p>
+        <p>description:{{res.weather.0.description}}</p>
+        <img src="https://openweathermap.org/img/wn/{{res.weather.0.icon}}@2x.png" alt="">
+    {% endif %}
+
+    {% if error %}
+        <p>{{error}}</p>
+    {% endif %}
+
+{% endblock content %}
+
